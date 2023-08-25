@@ -1,3 +1,5 @@
+package Bibliotecas;
+
 public class Ordenacao {
 
     // Bubble Sort (ordenação tipo bolha)
@@ -75,21 +77,20 @@ public class Ordenacao {
     }
 
     // Quick Sort (ordenação por divisão e conquista)
-    public static void quickSort(int[] vetor, int baixo, int alto) {
-        if (baixo < alto) {
-            int pi = particionar(vetor, baixo, alto);
-
-            quickSort(vetor, baixo, pi - 1);
-            quickSort(vetor, pi + 1, alto);
+    public static void quickSort(int[] vetor, int esquerda, int direita) {
+        if (esquerda < direita) {
+            int pivo = particionar(vetor, esquerda, direita);
+            quickSort(vetor, esquerda, pivo - 1);
+            quickSort(vetor, pivo + 1, direita);
         }
     }
 
-    private static int particionar(int[] vetor, int baixo, int alto) {
-        int pivo = vetor[alto];
-        int i = (baixo - 1);
+    private static int particionar(int[] vetor, int esquerda, int direita) {
+        int pivo = vetor[direita];
+        int i = (esquerda - 1);
 
-        int j = baixo;
-        while (j < alto) {
+        int j = esquerda;
+        while (j < direita) {
             if (vetor[j] < pivo) {
                 i++;
 
@@ -101,8 +102,8 @@ public class Ordenacao {
         }
 
         int temp = vetor[i + 1];
-        vetor[i + 1] = vetor[alto];
-        vetor[alto] = temp;
+        vetor[i + 1] = vetor[direita];
+        vetor[direita] = temp;
 
         return i + 1;
     }
