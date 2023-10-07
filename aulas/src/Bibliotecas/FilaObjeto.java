@@ -24,6 +24,13 @@ public class FilaObjeto {
         this.fim = -1;
     }
 
+    // Mantem o mesmo tamanho do vetor alocado
+    // Reinicializa os marcadores de Inicio e Fim
+    public void reiniciar() { 
+        this.inicio = 0;
+        this.fim = -1;
+    }
+
     // inserir(e) <= insere um elemento
     public Object inserir(Object novo) {
         if (((this.fim + 1) == this.tamanhoMax))// if (this.cheia())
@@ -50,7 +57,7 @@ public class FilaObjeto {
     }
 
     //FIRST()=> e    Retorna o lemento do topo mas não retira.
-  /*  public Object primeiro() {
+    /*  public Object primeiro() {
         if (this.vazia()) //if (this.topo == -1)
         {
             return null;
@@ -58,27 +65,33 @@ public class FilaObjeto {
         Object aux = this.item[this.inicio];
         return aux;
     }
-*/
+     */
     // isEmpty  => retorna boolenado  
     //            (se vazio então retrona True  senão retorna False)
     public boolean vazia() {
-        return (this.inicio>this.fim);
+        return (this.inicio > this.fim);
     }
 
     // isFULL  => retorna boolenado  
     //           (se cheia então retrona True  senão retorna False)
     public boolean cheia() {
-       return (this.fim+1==this.tamanhoMax);
+        return (this.fim + 1 == this.tamanhoMax);
     }
 
     // Retorna a quantidade de elementos na fila
     public int qtd() {
-        return (this.fim-this.inicio +1 );
+        return (this.fim - this.inicio + 1);
     }
 
     //Retorna quantos ainda podem serem inseridos na fila
     //a ser implementada pelos estudantes.
     public int vagos() {
-        return (this.tamanhoMax - (this.fim+1));
+        return (this.tamanhoMax - (this.fim + 1));
+    }
+    
+    // Retorna a quantidade de espaços disponíveis na fila
+    // lembrando que o mais indicado é usar o método vagos
+    public int capacidadeMaxima() {
+        return (this.tamanhoMax);
     }
 }

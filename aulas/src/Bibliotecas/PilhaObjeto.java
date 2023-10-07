@@ -18,8 +18,8 @@ public class PilhaObjeto {
         this.tamanhoMax = TamMax;
         this.item = new Object[TamMax];
         this.topo = -1; 
-    }
-
+    } 
+    
     // PUSH(e) <= insere um elemento
     public Object empilha(Object novo) {
         if (this.topo == this.tamanhoMax - 1)// if (this.cheia())
@@ -38,7 +38,10 @@ public class PilhaObjeto {
         {
             return null;
         }
-        return this.item[this.topo--];
+     //   return this.item[this.topo--];
+        Object aux = this.item[this.topo];
+        this.item[this.topo--] = null;
+        return aux;
     }
 
     //TOP()=> e    Retorna o lemento do topo mas não retira.
@@ -74,4 +77,12 @@ public class PilhaObjeto {
        //return ( this.tamanhoMax - this.qtd());
        return ( this.tamanhoMax - (this.topo+1));
     }
+    
+        
+    // Retorna a quantidade de espaços disponíveis na fila
+    // lembrando que o mais indicado é usar o método vagos
+    public int capacidadeMaxima() {
+        return (this.tamanhoMax);
+    }
+    
 }
